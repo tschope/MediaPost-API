@@ -5,7 +5,7 @@ Este package disponibiliza classes para conexão com API MediaPost baseado nas c
 ## Instalação
 
 ```bash
-$ composer require tschope/MediaPost-API 
+$ composer require tschope/media-post-api 
 ```
 
 ## Introdução
