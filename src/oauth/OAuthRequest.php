@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPost\API\oauth\OAuthRequest;
+namespace MediaPostAPI\oauth\OAuthRequest;
 
 class OAuthRequest {
     protected $parameters;

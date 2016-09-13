@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPost\API\oauth\OAuthSignatureMethod_PLAINTEXT;
+namespace MediaPostAPI\oauth\OAuthSignatureMethod_PLAINTEXT;
 
 /**
  * The PLAINTEXT method does not provide any security protection and SHOULD only be used

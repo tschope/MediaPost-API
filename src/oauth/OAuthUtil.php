@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPost\API\oauth\OAuthUtil;
+namespace MediaPostAPI\oauth\OAuthUtil;
 
 class OAuthUtil
 {

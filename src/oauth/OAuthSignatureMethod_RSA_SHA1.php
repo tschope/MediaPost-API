@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MediaPost\API\oauth\OAuthSignatureMethod_RSA_SHA1;
+namespace MediaPostAPI\oauth\OAuthSignatureMethod_RSA_SHA1;
 
 /**
  * The RSA-SHA1 signature method uses the RSASSA-PKCS1-v1_5 signature algorithm as defined in
