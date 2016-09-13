@@ -1,0 +1,25 @@
+parameters:
+    bin_dir: "./vendor/bin"
+    git_dir: "."
+    stop_on_failure: true
+    ignore_unstaged_changes: true
+    ascii:
+        failed: grumphp-grumpy.txt
+        succeeded: grumphp-happy.txt
+    tasks:
+        composer: ~
+        jsonlint: ~
+        phpcsfixer:
+            config_file: "./.php_cs"
+            level: psr2
+            verbose: true
+        phpcs:
+            standard: psr2
+            ignore_patterns: ['*/tests/*', '*/examples/*']
+        securitychecker:
+            lockfile: ./composer.lock
+            format: ~
+            end_point: ~
+            timeout: ~
+            run_always: false
+        yamllint: ~

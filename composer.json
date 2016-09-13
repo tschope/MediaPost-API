@@ -1,0 +1,14 @@
+{
+  "name": "API MediaPost",
+  "description": "API MediaPost baseado na lib diegosmts/MediaPost-API",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Rodrigo Tschope",
+      "email": "tschope@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.2.8"
+  }
+}
