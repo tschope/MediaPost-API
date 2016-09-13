@@ -1,6 +1,6 @@
 <?php
 /**
- * Busca um contato pelo código
+ * Busca um contato pelo cÃ³digo
  *
  * @copyright 2011 - MT4 Tecnologia
  * @author Diego Matos <diego@mt4.com.br>
@@ -9,9 +9,18 @@
  * @subpackage 
  * @since 01/06/2011
  */
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 /*
- * Código do contato
+ * CÃ³digo do contato
  */
 $cod_contato = 1;
 

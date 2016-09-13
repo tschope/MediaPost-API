@@ -1,6 +1,6 @@
 <?php
 /**
- * Teste de criação de uma mensagem
+ * Teste de criaÃ§Ã£o de uma mensagem
  *
  * @copyright 2011 - MT4 Tecnologia
  * @author Diego Matos <diego@mt4.com.br>
@@ -9,15 +9,24 @@
  * @subpackage 
  * @since 01/06/2011
  */
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 
 /*
- * Código da mensagem no sistema do cliente. Esse código será retornado junto com o código da mensagem
- * para facilitar a identificação da mensagem no sistema do cliente
+ * CÃ³digo da mensagem no sistema do cliente. Esse cÃ³digo serÃ¡ retornado junto com o cÃ³digo da mensagem
+ * para facilitar a identificaÃ§Ã£o da mensagem no sistema do cliente
  */
 $arrMensagem['uidcli'] = 897;
 /*
- * Código da mensagem no @MediaPost. Utilizado para alterar a mensagem ao invés de criar uma nova
+ * CÃ³digo da mensagem no @MediaPost. Utilizado para alterar a mensagem ao invÃ©s de criar uma nova
  */
 $arrMensagem['cod'] = 0;
 /*
@@ -28,14 +37,14 @@ $arrMensagem['remetente']['email'] 	= "diego@gmail.com";
 /*
  * Pasta onde deve ficar a mensagem
  */
-$arrMensagem['pasta'] = "Pasta padrão";
+$arrMensagem['pasta'] = "Pasta padrÃ£o";
 
 /*
- * Informações da mensagem.
+ * InformaÃ§Ãµes da mensagem.
  */
 $arrMensagem['mensagem']['ganalytics'] = "CampanhaAPI";
-$arrMensagem['mensagem']['assunto'] = "TESTE API Acentos ç á é ê ".time();
-$arrMensagem['mensagem']['html'] = 'Atualize o seu cadastro, SãoPaulo, julho - 2011 - A agência de marketing esportivo, Wolff Sports & Marketing, acaba de completar cinco anos no mercado e traz na bagagem cerca de 300 patrocínios intermediados em eventos esportivos. Em 2010, a agência teve um aumento de 40% no faturamento e se destacou por ser uma das poucas agências no parque atua com marketing esportivo diretamente com clubes e federações regionais.<a href="http://www.mpost.com.br/">clique aqui.';
+$arrMensagem['mensagem']['assunto'] = "TESTE API Acentos Ã§ Ã¡ Ã© Ãª ".time();
+$arrMensagem['mensagem']['html'] = 'Atualize o seu cadastro, SÃ£oPaulo, julho - 2011 - A agÃªncia de marketing esportivo, Wolff Sports & Marketing, acaba de completar cinco anos no mercado e traz na bagagem cerca de 300 patrocÃ­nios intermediados em eventos esportivos. Em 2010, a agÃªncia teve um aumento de 40% no faturamento e se destacou por ser uma das poucas agÃªncias no parque atua com marketing esportivo diretamente com clubes e federaÃ§Ãµes regionais.<a href="http://www.mpost.com.br/">clique aqui.';
 $arrMensagem['mensagem']['texto'] 	= "Mensagem em TXT";
 
 try { 

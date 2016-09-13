@@ -1,6 +1,6 @@
 <?php
 /**
- * Busca as informações de encaminhamento de uma mensagem
+ * Busca as informaÃ§Ãµes de encaminhamento de uma mensagem
  *
  * @copyright 2011 - MT4 Tecnologia
  * @author Diego Matos <diego@mt4.com.br>
@@ -9,9 +9,18 @@
  * @subpackage 
  * @since 01/06/2011
  */
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 /*
- * Código da mensagem no @MediaPost
+ * CÃ³digo da mensagem no @MediaPost
  */
 $cod_mensagem = 352;
 

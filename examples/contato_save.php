@@ -9,32 +9,41 @@
  * @subpackage 
  * @since 01/06/2011
  */
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 /*
- * É recomentado que essa operação seja feita em lotes de no máximo 500 contatos por vez
+ * Ã‰ recomentado que essa operaÃ§Ã£o seja feita em lotes de no mÃ¡ximo 500 contatos por vez
  */
 
 $arrContato = array();
 
 /*
- * Código da lista onde vai ficar o contato
+ * CÃ³digo da lista onde vai ficar o contato
  */
 $arrContato['lista'] = 506;
 
 /*
- * Código do contato no sistema do cliente
+ * CÃ³digo do contato no sistema do cliente
  */
 $arrContato['contato'][0]['uidcli'] = 1;
 /*
- * Código do contato no @MediaPost. Usado para atualizar as informações do contato
+ * CÃ³digo do contato no @MediaPost. Usado para atualizar as informaÃ§Ãµes do contato
  */
 $arrContato['contato'][0]['cod'] = 0;
 /*
- * Dados adicionais do contato. usar o método /contato/campos para listar todos os campos disponíveis
+ * Dados adicionais do contato. usar o mÃ©todo /contato/campos para listar todos os campos disponÃ­veis
  */
 $arrContato['contato'][0]['email'] = "teste".time();
-$arrContato['contato'][0]['livre1'] = "campo livre 1 é é";
-$arrContato['contato'][0]['livre2'] = "campo livre 2 ó ó ção";
+$arrContato['contato'][0]['livre1'] = "campo livre 1 Ã© Ã©";
+$arrContato['contato'][0]['livre2'] = "campo livre 2 Ã³ Ã³ Ã§Ã£o";
 
 try { 
 	$arrResult = $mapi->put("contato/salvar", $arrContato);

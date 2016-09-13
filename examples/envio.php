@@ -10,21 +10,30 @@
  * @since 01/06/2011
  */
 
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 
 /*
  * Data hora do envio. Formato SQL
- * Caso n„o seja informado o sistema assumir· a data atual como data do envio 
+ * Caso n√£o seja informado o sistema assumir√° a data atual como data do envio 
  */
 $arrEnvio['datahora_envio'] = "2011-01-01 10:00:00";
 /*
- * CÛdigos das listas que devem ser enviadas. ObrigatÛrio.
+ * C√≥digos das listas que devem ser enviadas. Obrigat√≥rio.
  */
 $arrEnvio['lista'][] = 749;
 
 /*
  * Filtros da lista. Devem ser usados os campos do cadastro do contato.
- * Essa informaÁ„o pode ser encontrada em URL_API/contato/campos
+ * Essa informa√ß√£o pode ser encontrada em URL_API/contato/campos
  */
 $arrEnvio['filtro']['livre1'][] = "valor1";
 $arrEnvio['filtro']['livre1'][] = "valor2";
@@ -37,7 +46,7 @@ $arrEnvio['filtro']['livre2'][] = "valor2";
 
 $arrEnvio['filtro']['livre3'] = "valor1";
 /*
- * CÛdigo da mensagem que ser· enviada
+ * C√≥digo da mensagem que ser√° enviada
  */
 $cod_mensagem = 398;
 

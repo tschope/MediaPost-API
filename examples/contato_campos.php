@@ -1,6 +1,6 @@
 <?php
 /**
- * Busca os campos disponíveis para um contato
+ * Busca os campos disponÃ­veis para um contato
  *
  * @copyright 2011 - MT4 Tecnologia
  * @author Diego Matos <diego@mt4.com.br>
@@ -9,7 +9,16 @@
  * @subpackage 
  * @since 01/06/2011
  */
-require_once 'conf.php';
+include dirname(dirname(__FILE__)).'/vendor/autoload.php';
+
+use MediaPost\API\MapiClient;
+
+$ConsumerKey	= "";
+$ConsumerSecret = "";
+$Token		    = "";
+$TokenSecret	= "";
+
+$mapi = new MapiClient($ConsumerKey, $ConsumerSecret, $Token, $TokenSecret);
 
 try { 
 	$arrResult = $mapi->get("contato/campos");
