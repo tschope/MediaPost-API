@@ -3,7 +3,6 @@
   "description": "API MediaPost baseado na lib diegosmts/MediaPost-API",
   "keywords": ["mediapost", "api"],
   "license": "MIT",
-  "type": "library",
   "authors": [
     {
       "name": "Rodrigo Tschope",
