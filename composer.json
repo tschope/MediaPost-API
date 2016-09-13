@@ -15,10 +15,10 @@
   },
   "autoload": {
     "classmap": [
-      "src"
+      "src/MediaPostAPI"
     ],
     "psr-4": {
-      "MediaPostAPI\\": "src/"
+      "MediaPostAPI\\": "src/MediaPostAPI/"
     }
   },
   "minimum-stability": "dev",
