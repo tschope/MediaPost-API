@@ -1,4 +1,7 @@
 <?
+
+namespace MediaPost\API\MapiException;
+
 /**
  * Exception da API do MediaPost
  *
@@ -11,7 +14,7 @@
 class MapiException extends Exception {
 	protected $result;
 	/**
-	 *	Método construtor
+	 *	Mï¿½todo construtor
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -30,7 +33,7 @@ class MapiException extends Exception {
 	}
 	
 	/**
-	 *	Método que retorna o array de exception
+	 *	Mï¿½todo que retorna o array de exception
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 17/03/2011
@@ -41,7 +44,7 @@ class MapiException extends Exception {
 	}
 	
 	/**
-	 *	Representação do erro como string
+	 *	Representaï¿½ï¿½o do erro como string
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 17/03/2011

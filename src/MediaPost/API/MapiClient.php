@@ -1,5 +1,20 @@
 <?
-require_once 'MapiException.php';
+
+namespace MediaPost\API\MapiClient;
+
+use MediaPost\API\MapiException;
+use MediaPost\API\oauth\OAuthConsumer;
+use MediaPost\API\oauth\OAuthDataStore;
+use MediaPost\API\oauth\OAuthException;
+use MediaPost\API\oauth\OAuthRequest;
+use MediaPost\API\oauth\OAuthServer;
+use MediaPost\API\oauth\OAuthSignatureMethod;
+use MediaPost\API\oauth\OAuthSignatureMethod_HMAC_SHA1;
+use MediaPost\API\oauth\OAuthSignatureMethod_PLAINTEXT;
+use MediaPost\API\oauth\OAuthSignatureMethod_RSA_SHA1;
+use MediaPost\API\oauth\OAuthToken;
+use MediaPost\API\oauth\OAuthUtil;
+
 if (!function_exists('curl_init')) {
   throw new Exception('MapiClient needs the CURL PHP extension.');
 }
@@ -7,7 +22,6 @@ if (!function_exists('json_decode')) {
   throw new Exception('MapiClient needs the JSON PHP extension.');
 }
 
-require_once 'oauth/OAuth.php';
 
 /**
  * Classe cliente de acesso da API do MediaPost
@@ -27,7 +41,7 @@ class MapiClient {
 	private $_custom_urlbase = null;
 	
 	/**
-	 *	Método construtor
+	 *	Mï¿½todo construtor
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -51,7 +65,7 @@ class MapiClient {
 	 	}
 	}
 	/**
-	 *	Método que altera a URL Base da API
+	 *	Mï¿½todo que altera a URL Base da API
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 17/03/2011
@@ -61,7 +75,7 @@ class MapiClient {
 	 	$this->_custom_urlbase = $url;
 	}
 	/**
-	 *	Método que retorna a URL Base da API
+	 *	Mï¿½todo que retorna a URL Base da API
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 17/03/2011
@@ -75,7 +89,7 @@ class MapiClient {
 		}
 	}
 	/**
-	 *	Método que define um ConsumerKey
+	 *	Mï¿½todo que define um ConsumerKey
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -85,7 +99,7 @@ class MapiClient {
 	 	$this->_consumerKey = $_consumerKey;
 	}
 	/**
-	 *	Método que define um ConsumerSecret
+	 *	Mï¿½todo que define um ConsumerSecret
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -95,7 +109,7 @@ class MapiClient {
 	 	$this->_consumerSecret = $_consumerSecret;
 	}
 	/**
-	 *	Método que define um Token
+	 *	Mï¿½todo que define um Token
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -105,7 +119,7 @@ class MapiClient {
 	 	$this->_token = $_token;
 	}
 	/**
-	 *	Método que define um TokenSecret
+	 *	Mï¿½todo que define um TokenSecret
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -115,7 +129,7 @@ class MapiClient {
 	 	$this->_tokenSecret = $_tokenSecret;
 	}
 	/**
-	 *	Método que executa uma requisição HTTP GET
+	 *	Mï¿½todo que executa uma requisiï¿½ï¿½o HTTP GET
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -127,7 +141,7 @@ class MapiClient {
 	 	return $request;
 	}
 	/**
-	 *	Método que executa uma requisição HTTP POST
+	 *	Mï¿½todo que executa uma requisiï¿½ï¿½o HTTP POST
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -142,7 +156,7 @@ class MapiClient {
 		return $request;
 	}
 	/**
-	 *	Método que executa uma requisição HTTP PUT 
+	 *	Mï¿½todo que executa uma requisiï¿½ï¿½o HTTP PUT 
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -168,7 +182,7 @@ class MapiClient {
 		return $request;
 	}
 	/**
-	 *	Método que excuta uma requisição HTTP DELETE
+	 *	Mï¿½todo que excuta uma requisiï¿½ï¿½o HTTP DELETE
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -180,7 +194,7 @@ class MapiClient {
 	 	return $request;
 	}
 	/**
-	 *	Método que encoda uma string para utf8
+	 *	Mï¿½todo que encoda uma string para utf8
 	 *	@access public
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 06/06/2011
@@ -199,7 +213,7 @@ class MapiClient {
 		return $arrData;
 	}
 	/**
-	 *	Método que faz o request de uma url
+	 *	Mï¿½todo que faz o request de uma url
 	 *	@access private
 	 *	@author Diego Matos <diego@mt4.com.br>
 	 *	@since 16/03/2011
@@ -227,13 +241,13 @@ class MapiClient {
 		
 	 	$ch = curl_init();
 	 	/*
-	 	 * Cabeçalho padrão
+	 	 * Cabeï¿½alho padrï¿½o
 	 	 */
 	 	$headers[] = 'Accept: application/json'; // options json, xml e php
 	 	$headers[] = 'Expect:';
 	 	$headers[] = $oAuthHeader;
 	 	/*
-	 	 * Paramêtros
+	 	 * Paramï¿½tros
 	 	 */
 	 	$opts[CURLOPT_URL] 			= $url;	 	
 	 	$opts[CURLOPT_HTTPHEADER] 	= $headers;
@@ -242,7 +256,7 @@ class MapiClient {
 	 	
 	 	curl_setopt_array($ch, $opts);
 	 	/*
-	 	 * Execução
+	 	 * Execuï¿½ï¿½o
 	 	 */
 	 	$result = curl_exec($ch);
 	 	
