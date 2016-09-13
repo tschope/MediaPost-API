@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthToken;
+namespace MediaPostAPI\oauth;
 
 class OAuthToken {
     // access tokens and request tokens

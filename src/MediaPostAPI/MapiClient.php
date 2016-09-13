@@ -1,19 +1,11 @@
 <?php
 
-namespace MediaPostAPI\MapiClient;
+namespace MediaPostAPI;
 
-use MediaPostAPI\MapiException;
 use MediaPostAPI\oauth\OAuthConsumer;
-use MediaPostAPI\oauth\OAuthDataStore;
-use MediaPostAPI\oauth\OAuthException;
 use MediaPostAPI\oauth\OAuthRequest;
-use MediaPostAPI\oauth\OAuthServer;
-use MediaPostAPI\oauth\OAuthSignatureMethod;
 use MediaPostAPI\oauth\OAuthSignatureMethod_HMAC_SHA1;
-use MediaPostAPI\oauth\OAuthSignatureMethod_PLAINTEXT;
-use MediaPostAPI\oauth\OAuthSignatureMethod_RSA_SHA1;
 use MediaPostAPI\oauth\OAuthToken;
-use MediaPostAPI\oauth\OAuthUtil;
 
 if (!function_exists('curl_init')) {
   throw new Exception('MapiClient needs the CURL PHP extension.');

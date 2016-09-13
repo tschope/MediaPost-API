@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthServer;
+namespace MediaPostAPI\oauth;
 
 class OAuthServer {
     protected $timestamp_threshold = 300; // in seconds, five minutes

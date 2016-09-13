@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthException;
+namespace MediaPostAPI\oauth;
 
 /* Generic exception class
  */

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthSignatureMethod;
+namespace MediaPostAPI\oauth;
 
 /**
  * A class for implementing a Signature Method

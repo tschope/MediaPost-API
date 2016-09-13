@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthConsumer;
+namespace MediaPostAPI\oauth;
 
 
 class OAuthConsumer {

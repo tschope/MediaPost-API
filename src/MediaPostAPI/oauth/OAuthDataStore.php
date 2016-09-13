@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaPostAPI\oauth\OAuthDataStore;
+namespace MediaPostAPI\oauth;
 
 class OAuthDataStore {
     function lookup_consumer($consumer_key) {
