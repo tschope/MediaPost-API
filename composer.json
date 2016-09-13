@@ -2,6 +2,7 @@
   "name": "tschope/MediaPost-API",
   "description": "API MediaPost baseado na lib diegosmts/MediaPost-API",
   "keywords": ["mediapost", "api"],
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
@@ -11,6 +12,14 @@
   ],
   "require": {
     "php": ">=5.4"
+  },
+  "autoload": {
+    "classmap": [
+      "src"
+    ],
+    "psr-4": {
+      "MediaPostAPI\\": "src/"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
