@@ -6,7 +6,7 @@ use MediaPostAPI\oauth\OAuthConsumer;
 use MediaPostAPI\oauth\OAuthRequest;
 use MediaPostAPI\oauth\OAuthSignatureMethod_HMAC_SHA1;
 use MediaPostAPI\oauth\OAuthToken;
-use MapiException;
+use MediaPostAPI\MapiException;
 
 if (!function_exists('curl_init')) {
   throw new Exception('MapiClient needs the CURL PHP extension.');
@@ -254,7 +254,7 @@ class MapiClient {
 	 	$result = curl_exec($ch);
 	 	
 	 	if ($result === false){
-	 		$e = new MapiException(
+	 		$e = new \MediaPostAPI\MapiException(
 	 				array('error_code' => curl_errno($ch),
 						  'error'      => array(
 								'message' => curl_error($ch),
@@ -267,7 +267,7 @@ class MapiClient {
 	 	} else {
 	 		$arrResult = json_decode($result, true);
 	 		if(isset($arrResult['response']['erro']) && $arrResult['response']['erro'] == 1){
-	 			$e = new MapiException(
+	 			$e = new \MediaPostAPI\MapiException(
 	 				array('error_code' => $arrResult['response']['status'],
 						  'error'      => array(
 								'message' => utf8_decode($arrResult['response']['mensagem']),
