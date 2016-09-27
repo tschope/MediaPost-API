@@ -1,6 +1,6 @@
 <?
 
-namespace MediaPostAPI;
+namespace MapiException;
 
 /**
  * Exception da API do MediaPost
