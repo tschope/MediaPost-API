@@ -11,7 +11,7 @@ namespace MediaPostAPI;
  * @package MAPI
  * @since 16/03/2011
  */
-class MapiException extends Exception {
+class MapiException extends \Exception {
     protected $result;
     /**
      *	M�todo construtor
