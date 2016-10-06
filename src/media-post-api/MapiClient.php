@@ -281,7 +281,7 @@ class MapiClient {
 	 		}
 	 	}
 	 	curl_close($ch);
-	 	if(count($arrResult['result'])){
+	 	if(isset($arrResult['result']) && count($arrResult['result'])){
 	 		return $arrResult['result'];
 	 	} else {
 	 		return utf8_decode($arrResult['response']['mensagem']);
